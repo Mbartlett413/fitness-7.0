@@ -16,9 +16,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_161735) do
 
   create_table "days", force: :cascade do |t|
     t.string "title"
-    t.boolean "active"
+    t.boolean "active", default: true
+    t.bigint "week_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["week_id"], name: "index_days_on_week_id"
   end
 
   create_table "programs", force: :cascade do |t|
@@ -51,10 +53,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_161735) do
 
   create_table "weeks", force: :cascade do |t|
     t.string "title"
-    t.boolean "active"
+    t.boolean "active", default: true
+    t.bigint "program_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["program_id"], name: "index_weeks_on_program_id"
   end
 
+  add_foreign_key "days", "weeks"
   add_foreign_key "programs", "users"
+  add_foreign_key "weeks", "programs"
 end

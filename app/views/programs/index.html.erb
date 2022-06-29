@@ -1,1 +1,27 @@
-<h1>hi</h1>
+<div class="w-full h-auto overflow-y-scroll"> 
+  <div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+      <h1 class="text-xl font-semibold text-gray-900">Program Marketplaace</h1>
+      <p class="mt-2 text-sm text-gray-700">Get Fit, Stay Fit, Help Others</p>
+    </div>
+  </div>
+  <div class="w-full pt-20">
+    <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <% @programs.each do |program| %>
+      <li class="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200 ">
+        <div class=" flex items-center justify-between p-6 space-x-6">
+          <div class="flex-1 truncate">
+            <div class="flex items-center space-x-3">
+              <h3 class="text-gray-900 text-sm font-medium truncate"> <%= program.title %></td></h3>
+
+            </div>
+            <p class="mt-1 text-gray-500 text-sm truncate">Weeks<%= program.num_weeks %></td>  </p>
+            <p class="mt-1 text-gray-500 text-sm truncate">Days: <%= program.days_per_week %></td>  </p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+
+    </ul>
+  </div>
+</div>
