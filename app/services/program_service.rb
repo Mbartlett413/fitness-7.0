@@ -15,7 +15,7 @@ class ProgramService < ApplicationService
 
        day_count = 0
          while day_count < @days_per_week
-           DayService.call(week, count)
+           DayService.call(week, day_count)
            day_count += 1
          end
       end 

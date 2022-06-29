@@ -1,4 +1,6 @@
 class ProgramsController < ApplicationController
+  before_action :program, only: [:show, :edit, :update, :destroy]
+
   def index
     @programs = Program.all
   end
@@ -6,6 +8,8 @@ class ProgramsController < ApplicationController
   def new
     @program = Program.new
   end 
+
+  def show; end 
 
   def create
     @program = Program.new(program_params.merge(user_id: current_user.id))

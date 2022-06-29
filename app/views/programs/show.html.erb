@@ -1,0 +1,10 @@
+<%= @program.inspect %>
+<br>
+<% @program.weeks.each do |week| %>
+    <%= week.title %>
+    <br>
+    <% week.days.each do |day| %>
+        <%= day.title %>
+        <br>
+    <% end %>
+<% end %>
