@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_29_161735) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_29_185825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_161735) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["week_id"], name: "index_days_on_week_id"
+  end
+
+  create_table "exercises", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "programs", force: :cascade do |t|
@@ -34,6 +40,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_161735) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_programs_on_user_id"
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.string "coach_notes"
+    t.string "client_notes"
+    t.integer "exercise_id"
+    t.integer "volume_id"
+    t.bigint "day_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_trainings_on_day_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +68,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_161735) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "volumes", force: :cascade do |t|
+    t.boolean "free_text", default: false
+    t.text "volume_text"
+    t.integer "weight"
+    t.integer "reps"
+    t.integer "percentage"
+    t.integer "superset_id"
+    t.boolean "amrap", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "weeks", force: :cascade do |t|
     t.string "title"
     t.boolean "active", default: true
@@ -62,5 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_29_161735) do
 
   add_foreign_key "days", "weeks"
   add_foreign_key "programs", "users"
+  add_foreign_key "trainings", "days"
   add_foreign_key "weeks", "programs"
 end

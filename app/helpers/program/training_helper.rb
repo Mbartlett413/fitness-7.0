@@ -1,0 +1,2 @@
+module Program::TrainingHelper
+end

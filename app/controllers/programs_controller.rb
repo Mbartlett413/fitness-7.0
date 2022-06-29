@@ -1,5 +1,5 @@
 class ProgramsController < ApplicationController
-  before_action :program, only: [:show, :edit, :update, :destroy]
+  before_action :program, only: %i[show edit update destroy]
 
   def index
     @programs = Program.all
@@ -7,9 +7,11 @@ class ProgramsController < ApplicationController
 
   def new
     @program = Program.new
-  end 
+  end
 
-  def show; end 
+  def edit; end
+
+  def show; end
 
   def create
     @program = Program.new(program_params.merge(user_id: current_user.id))
@@ -24,7 +26,7 @@ class ProgramsController < ApplicationController
         format.json { render json: @program.errors, status: :unprocessable_entity }
       end
     end
-  end 
+  end
 
   def destroy
     @program.destroy
@@ -33,7 +35,7 @@ class ProgramsController < ApplicationController
       format.html { redirect_to root_path, notice: I18n.t('admin.loafs.success.updated') }
       format.json { head :no_content }
     end
-  end 
+  end
 
   def update
     respond_to do |format|
@@ -45,15 +47,15 @@ class ProgramsController < ApplicationController
         format.json { render json: @program.errors, status: :unprocessable_entity }
       end
     end
-  end 
+  end
 
   private
 
   def program
     @program ||= Program.find(params[:id])
-  end 
+  end
 
   def program_params
     params.require(:program).permit(:title, :num_weeks, :days_per_week, :cost)
-  end 
+  end
 end

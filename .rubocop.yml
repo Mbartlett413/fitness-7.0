@@ -1,0 +1,131 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "Guardfile"
+    - "db/**/*"
+    - "config/**/*"
+    - "spec/support/*.rb"
+    - "spec/*.rb"
+    - "node_modules/**/*"
+    - "bin/**/*/"
+    - "vendor/**/*"
+    - "lib/tasks/**/*"
+    - "lib/extensions/**/*"
+    - "Gemfile"
+
+Layout/HashAlignment:
+  Enabled: false
+  EnforcedColonStyle: table
+  EnforcedLastArgumentHashStyle: ignore_implicit
+
+Lint/MissingSuper:
+  Exclude:
+    - "app/services/**/*.rb"
+
+Metrics/AbcSize:
+  Max: 25
+  Exclude:
+    - "app/services/admin/**/*.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "app/admin/**/*.rb"
+    - "app/**/*.arb"
+    - "config/routes.rb"
+    - "spec/**/*_spec.rb"
+    - "spec/factories/**/*.rb"
+
+Metrics/ClassLength:
+  Exclude:
+    - "app/models/questionary.rb"
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - "app/admin/**/*.rb"
+
+Metrics/ParameterLists:
+  Exclude:
+    - "app/services/base_api_service.rb"
+
+Rails/I18nLocaleTexts:
+  Exclude:
+    - "app/admin/**/*.rb"
+
+Rails/LinkToBlank:
+  Exclude:
+    - "app/admin/**/*.rb"
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - "spec/acceptance/**/*.rb"
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/ExpectInHook:
+  Exclude:
+    - "spec/acceptance/**/*.rb"
+
+RSpec/ImplicitExpect:
+  Enabled: false
+
+RSpec/ImplicitSubject:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/LeakyConstantDeclaration:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 6
+  Exclude:
+    - "spec/services/participants/yodlee_connection_spec.rb"
+    - "spec/acceptance/**/*.rb"
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - "spec/services/participants/yodlee_connection_spec.rb"
+
+RSpec/NestedGroups:
+  Max: 6
+
+RSpec/SubjectStub:
+  Exclude:
+    - "spec/services/participants/yodlee_connection_spec.rb"
+
+Style/BlockDelimiters:
+  Exclude:
+    - "spec/**/*.rb"
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Exclude:
+    - "app/admin/**/*.rb"
