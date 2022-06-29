@@ -1,5 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Program, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { build(:program) }
+
+  it { should be_valid }
 end
